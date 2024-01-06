@@ -1,8 +1,8 @@
 on:
   workflow_dispatch:
     inputs:
-      tag: 
-        description: "v5.2.0"
+      tag: v5.4.1
+        description: "The tag version you want to build"
   push:
     paths:
       - "v2ray.sh"
@@ -38,7 +38,7 @@ jobs:
       - name: Get tag to build
         id: tag
         run: |
-          v5.2.0=$(curl -sSL --retry 5 "https://api.github.com/repos/v2fly/v2ray-core/releases/latest" | jq .tag_name | awk -F '"' '{print $2}')
+          latest_tag=$(curl -sSL --retry 5 "https://api.github.com/repos/v2fly/v2ray-core/releases/latest" | jq .tag_name | awk -F '"' '{print $2}')
           if [[ -z "${{ github.event.inputs.tag }}" ]]; then
             echo "Use the latest release tag of v2ray-core: ${latest_tag}"
             echo "tag=${latest_tag}" >> $GITHUB_OUTPUT
