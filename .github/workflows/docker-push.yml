@@ -1,8 +1,8 @@
 on:
   workflow_dispatch:
     inputs:
-      tag: v5.2.0
-        description: "The tag version you want to build"
+      tag: 
+        description: v5.2.0
   push:
     paths:
       - "v2ray.sh"
