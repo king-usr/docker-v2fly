@@ -1,7 +1,8 @@
 on:
   workflow_dispatch:
     inputs:
-      tag: v5.4.1
+      tag: 
+        description: "v5.4.1"
   push:
     paths:
       - "v2ray.sh"
